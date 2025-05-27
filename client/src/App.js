@@ -24,7 +24,7 @@ function App() {
   const formattedTime = currentTime.toLocaleTimeString();
 
   useEffect(() => {
-    axios.get('https://todoprojects-2aqw.onrender.com/api/tasks')
+    axios.get('https://mytodosksuproject.onrender.com//api/tasks')
       .then(response => setTasksId(response.data))
       .catch(error => console.error('Error fetching tasks:', error));
   }, []);
@@ -32,7 +32,7 @@ function App() {
   const handleAddTask = () => {
     if (!newTask.trim()) return;
 
-    axios.post('https://todoprojects-2aqw.onrender.com/api/tasks', { title: newTask, completed: false })
+    axios.post('https://mytodosksuproject.onrender.com//api/tasks', { title: newTask, completed: false })
       .then(response => {
         setTasksId([...tasks, response.data]);
         setNewTask('');
@@ -41,7 +41,7 @@ function App() {
   };
 
   const handleDeleteTask = (id) => {
-    axios.delete(`https://todoprojects-2aqw.onrender.com/api/tasks/${id}`)
+    axios.delete(`https://mytodosksuproject.onrender.com//api/tasks/${id}`)
       .then(() => {
         setTasksId(tasks.filter(task => task._id !== id));
         setStrikedTasks(prev => {
@@ -61,7 +61,7 @@ function App() {
   const handleSaveEdit = (id) => {
     if (!editText.trim()) return;
 
-    axios.put(`https://todoprojects-2aqw.onrender.com/api/tasks/${id}`, { title: editText })
+    axios.put(`https://mytodosksuproject.onrender.com//api/tasks/${id}`, { title: editText })
       .then(response => {
         setTasksId(tasks.map(task => task._id === id ? response.data : task));
         setEditTaskId(null);
